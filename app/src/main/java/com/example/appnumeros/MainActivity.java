@@ -69,8 +69,11 @@ public class MainActivity extends AppCompatActivity {
         String nombreStr=txtNombre.getText().toString();
 
         if(!nombreStr.equals("")){
-            music.stop();
-            music.release();
+
+            //joz 2020-04-08
+            //Si ya declaraste que en ondestroy se va a parar la musica, aqui lo esta haciendo doble
+            /*music.stop();
+            music.release();*/
 
             Intent intent = new Intent(this,Main2Activity_Nivel1.class);
 
@@ -111,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostResume() {
+    protected void onResume() {
         super.onPostResume();
 
         music.start();

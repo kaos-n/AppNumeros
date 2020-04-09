@@ -3,7 +3,10 @@ package com.example.appnumeros;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
@@ -56,6 +59,34 @@ public class MainActivity extends AppCompatActivity {
             imagenPersonaje.setImageResource(id);
         }
 
+        //Conexion con la BD
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"BD",null,1);
+        SQLiteDatabase BD = admin.getWritableDatabase();
+
+        //String nombreStr=txtNombre.getText().toString();
+        Cursor consulta = BD.rawQuery(
+                "select * from puntaje where puntos = (select max(puntos) from puntaje)",null);
+
+        if(consulta.moveToFirst()){
+            String temp_nombre = consulta.getString(0);
+            String temp_puntos = consulta.getString(1);
+            txtRecord.setText("Record: " + temp_puntos + " de " + temp_nombre);
+            BD.close();
+        } else {
+            BD.close();
+        }
+
+        /*if(!nombreStr.equals("")){
+            ContentValues registro = new ContentValues();
+            registro.put("jugador",nombreStr);
+
+            BD.insert("puntaje",null,registro);
+            BD.close();
+
+        } else {
+
+        }
+        */
 
 
         //Musica de fondo
@@ -115,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        super.onPostResume();
+        super.onResume();
 
         music.start();
     }

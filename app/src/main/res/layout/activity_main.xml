@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,29 +9,20 @@
 
     <ImageView
         android:id="@+id/imagenPersonaje"
-        android:layout_width="172dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="122dp"
-        android:layout_marginLeft="122dp"
-        android:layout_marginTop="-11dp"
+        android:layout_width="151dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="-10dp"
         android:contentDescription="@string/app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/chicobestia" />
 
     <Button
         android:id="@+id/btnPlay"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="84dp"
-        android:layout_marginRight="84dp"
-        android:layout_marginBottom="244dp"
+        android:layout_marginBottom="8dp"
         android:background="#B655C6"
         android:lineSpacingExtra="24sp"
         android:onClick="Jugar"
@@ -40,38 +31,37 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombre"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtRecord"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="-2dp"
-        android:layout_marginLeft="-2dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="16dp"
         android:background="#81FFFFFF"
         android:gravity="center"
         android:textAllCaps="true"
         android:textColor="#FFFFFF"
         android:textColorHighlight="@color/colorPrimaryDark"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="243dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="false"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="222dp"
-        android:layout_marginEnd="58dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="156dp"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/nombre"
@@ -84,8 +74,9 @@
         android:textColorLink="#5D116A"
         android:textCursorDrawable="@android:color/white"
         android:textSize="24sp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="59dp"
-        android:layout_marginRight="58dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

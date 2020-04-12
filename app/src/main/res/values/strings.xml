@@ -2,7 +2,11 @@
     <string name="app_name">¡Vamos a jugar!</string>
     <string name="nombre">¿Como te llamas?</string>
     <string name="play">Jugar</string>
+    <string name="app">Jugador</string>
     <string name="respuesta">Respuesta</string>
     <string name="comprobar">comprobar</string>
-    <string name="app">Jugador</string>
+    <string name="jugador">Jugador: </string>
+    <string name="intentos">Intentos: </string>
+    <string name="puntos">Puntos: 0</string>
+
 </resources>

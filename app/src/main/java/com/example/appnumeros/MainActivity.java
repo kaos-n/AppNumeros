@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"BD",null,1);
         SQLiteDatabase BD = admin.getWritableDatabase();
 
-        //String nombreStr=txtNombre.getText().toString();
         Cursor consulta = BD.rawQuery(
                 "select * from puntaje where puntos = (select max(puntos) from puntaje)",null);
 
@@ -75,19 +74,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             BD.close();
         }
-
-        /*if(!nombreStr.equals("")){
-            ContentValues registro = new ContentValues();
-            registro.put("jugador",nombreStr);
-
-            BD.insert("puntaje",null,registro);
-            BD.close();
-
-        } else {
-
-        }
-        */
-
 
         //Musica de fondo
         music = MediaPlayer.create(this,R.raw.backsound);

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/wallpaperprincipal"
-    tools:context=".Main2Activity_Nivel2">
+    tools:context=".Main2Activity_Nivel6">
 
     <TextView
         android:id="@+id/txtNombre"
@@ -71,7 +71,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtVidas"
         app:layout_constraintVertical_bias="0.069"
-        app:srcCompat="@drawable/suma" />
+        app:srcCompat="@drawable/resta" />
 
     <ImageView
         android:id="@+id/imagenSegundoNum"

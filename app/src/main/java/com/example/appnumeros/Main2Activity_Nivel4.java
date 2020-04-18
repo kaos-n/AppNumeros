@@ -13,10 +13,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Main2Activity_Nivel1 extends AppCompatActivity {
+public class Main2Activity_Nivel4 extends AppCompatActivity {
 
     private TextView txtjugador, txtpuntos;
-    private ImageView imguno, imgdos, imgvidas;
+    private ImageView imguno, imgdos, imgvidas, imgsigno;
     private EditText etirespuesta;
     private MediaPlayer music, mpbien, mpmal;
 
@@ -28,7 +28,7 @@ public class Main2Activity_Nivel1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2__nivel1);
+        setContentView(R.layout.activity_main2__nivel4);
 
         //Icono en la Action Bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -39,12 +39,27 @@ public class Main2Activity_Nivel1 extends AppCompatActivity {
         imgvidas = findViewById(R.id.imagen_vidas);
         imguno = findViewById(R.id.imagenPrimerNum);
         imgdos = findViewById(R.id.imagenSegundoNum);
+        imgsigno = findViewById(R.id.imagenSigno);
         etirespuesta = findViewById(R.id.txtRespuesta);
 
         nombrejugador = getIntent().getStringExtra("jugador");
         txtjugador.setText("Jugador: " + nombrejugador);
 
-        Toast.makeText(this,"Nivel 1 - Sumas Básicas", Toast.LENGTH_SHORT).show();
+        strpuntaje = getIntent().getStringExtra("puntaje");
+        puntaje = Integer.parseInt(strpuntaje);
+        txtpuntos.setText("Puntos: "+ puntaje);
+
+        strvidas = getIntent().getStringExtra("vidas");
+        vidas = Integer.parseInt(strvidas);
+        if(vidas == 3){
+            imgvidas.setImageResource(R.drawable.tresvidas);
+        } if (vidas == 2) {
+            imgvidas.setImageResource(R.drawable.dosvidas);
+        } if (vidas == 1){
+            imgvidas.setImageResource(R.drawable.unavida);
+        }
+
+        Toast.makeText(this,"Nivel 4 - Sumas y Restas", Toast.LENGTH_SHORT).show();
 
         music = MediaPlayer.create(this,R.raw.goats);
         music.start();
@@ -109,27 +124,35 @@ public class Main2Activity_Nivel1 extends AppCompatActivity {
 
     //numeros aleatorios para las sumas
     public void NumAleatorio(){
-        if(puntaje<=9){
+        if(puntaje<=39){
 
             numAleatorio_uno = (int)(Math.random()*10);
             numAleatorio_dos = (int)(Math.random()*10);
 
-            resultado = numAleatorio_uno+numAleatorio_dos;
+            if(numAleatorio_uno >= 0 && numAleatorio_uno <=4){
+                resultado = numAleatorio_uno + numAleatorio_dos;
+                imgsigno.setImageResource(R.drawable.suma);
+            } else {
+                resultado = numAleatorio_uno - numAleatorio_dos;
+                imgsigno.setImageResource(R.drawable.resta);
+            }
 
-            if(resultado <=10){
-                for(int i = 0; i <numero.length; i++){
+            if(resultado >= 0) {
+                for (int i = 0; i < numero.length; i++) {
                     int id = getResources().getIdentifier(numero[i], "drawable", getPackageName());
-                    if (numAleatorio_uno == i){
+                    if (numAleatorio_uno == i) {
                         imguno.setImageResource(id);
-                    } if (numAleatorio_dos==i){
+                    }
+                    if (numAleatorio_dos == i) {
                         imgdos.setImageResource(id);
                     }
                 }
             } else {
                 NumAleatorio();
             }
+
         } else {
-            Intent intent = new Intent(this, Main2Activity_Nivel2.class);
+            Intent intent = new Intent(this, Main2Activity_Nivel5.class);
 
             strpuntaje = String.valueOf(puntaje);
             strvidas = String.valueOf(vidas);
